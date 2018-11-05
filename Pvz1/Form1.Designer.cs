@@ -30,7 +30,6 @@ namespace Pvz1
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.chartGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -46,7 +45,6 @@ namespace Pvz1
             this.radioH = new System.Windows.Forms.RadioButton();
             this.btnGauss = new System.Windows.Forms.Button();
             this.btnOptimization = new System.Windows.Forms.Button();
-            this.tmrOptimization = new System.Windows.Forms.Timer(this.components);
             this.butBroiden = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartGraph)).BeginInit();
             this.SuspendLayout();
@@ -190,10 +188,6 @@ namespace Pvz1
             this.btnOptimization.UseVisualStyleBackColor = true;
             this.btnOptimization.Click += new System.EventHandler(this.BtnOptimization_Click);
             // 
-            // tmrOptimization
-            // 
-            this.tmrOptimization.Tick += new System.EventHandler(this.tmrOptimization_Tick);
-            // 
             // butBroiden
             // 
             this.butBroiden.Location = new System.Drawing.Point(692, 179);
@@ -277,7 +271,6 @@ namespace Pvz1
         private RadioButton radioH;
         private Button btnGauss;
         private Button btnOptimization;
-        private Timer tmrOptimization;
         private Button butBroiden;
     }
 

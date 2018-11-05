@@ -334,11 +334,6 @@ namespace Pvz1
             new GaussianElimination(this).Run();
         }
 
-        private void tmrOptimization_Tick(object sender, EventArgs e)
-        {
-
-        }
-
         private void butBroiden_Click(object sender, EventArgs e)
         {
             new BroydenMethod(this).Run();
