@@ -46,6 +46,9 @@ namespace Pvz1
             this.btnGauss = new System.Windows.Forms.Button();
             this.btnOptimization = new System.Windows.Forms.Button();
             this.butBroiden = new System.Windows.Forms.Button();
+            this.btnInterpolation = new System.Windows.Forms.Button();
+            this.radioLinear = new System.Windows.Forms.RadioButton();
+            this.radioCiobyscev = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.chartGraph)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +60,7 @@ namespace Pvz1
             this.chartGraph.Legends.Add(legend1);
             this.chartGraph.Location = new System.Drawing.Point(12, 12);
             this.chartGraph.Name = "chartGraph";
-            this.chartGraph.Size = new System.Drawing.Size(669, 394);
+            this.chartGraph.Size = new System.Drawing.Size(669, 729);
             this.chartGraph.TabIndex = 0;
             this.chartGraph.Text = "chart1";
             // 
@@ -66,16 +69,16 @@ namespace Pvz1
             this.textOutputBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.textOutputBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.textOutputBox.Location = new System.Drawing.Point(12, 412);
+            this.textOutputBox.Location = new System.Drawing.Point(12, 747);
             this.textOutputBox.Name = "textOutputBox";
-            this.textOutputBox.Size = new System.Drawing.Size(669, 251);
+            this.textOutputBox.Size = new System.Drawing.Size(669, 192);
             this.textOutputBox.TabIndex = 1;
             this.textOutputBox.Text = "";
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(773, 643);
+            this.btnClose.Location = new System.Drawing.Point(773, 919);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 2;
@@ -106,7 +109,7 @@ namespace Pvz1
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(692, 643);
+            this.btnClear.Location = new System.Drawing.Point(692, 919);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 6;
@@ -127,23 +130,20 @@ namespace Pvz1
             // radioF
             // 
             this.radioF.AutoSize = true;
-            this.radioF.Checked = true;
-            this.radioF.Location = new System.Drawing.Point(692, 413);
+            this.radioF.Location = new System.Drawing.Point(692, 132);
             this.radioF.Name = "radioF";
             this.radioF.Size = new System.Drawing.Size(75, 17);
             this.radioF.TabIndex = 9;
-            this.radioF.TabStop = true;
             this.radioF.Text = "Function F";
             this.radioF.UseVisualStyleBackColor = true;
             // 
             // radioG
             // 
             this.radioG.AutoSize = true;
-            this.radioG.Location = new System.Drawing.Point(692, 436);
+            this.radioG.Location = new System.Drawing.Point(692, 155);
             this.radioG.Name = "radioG";
             this.radioG.Size = new System.Drawing.Size(77, 17);
             this.radioG.TabIndex = 10;
-            this.radioG.TabStop = true;
             this.radioG.Text = "Function G";
             this.radioG.UseVisualStyleBackColor = true;
             // 
@@ -160,17 +160,16 @@ namespace Pvz1
             // radioH
             // 
             this.radioH.AutoSize = true;
-            this.radioH.Location = new System.Drawing.Point(692, 459);
+            this.radioH.Location = new System.Drawing.Point(692, 178);
             this.radioH.Name = "radioH";
             this.radioH.Size = new System.Drawing.Size(77, 17);
             this.radioH.TabIndex = 12;
-            this.radioH.TabStop = true;
             this.radioH.Text = "Function H";
             this.radioH.UseVisualStyleBackColor = true;
             // 
             // btnGauss
             // 
-            this.btnGauss.Location = new System.Drawing.Point(692, 150);
+            this.btnGauss.Location = new System.Drawing.Point(692, 223);
             this.btnGauss.Name = "btnGauss";
             this.btnGauss.Size = new System.Drawing.Size(156, 23);
             this.btnGauss.TabIndex = 13;
@@ -180,7 +179,7 @@ namespace Pvz1
             // 
             // btnOptimization
             // 
-            this.btnOptimization.Location = new System.Drawing.Point(692, 208);
+            this.btnOptimization.Location = new System.Drawing.Point(692, 281);
             this.btnOptimization.Name = "btnOptimization";
             this.btnOptimization.Size = new System.Drawing.Size(156, 23);
             this.btnOptimization.TabIndex = 14;
@@ -190,19 +189,54 @@ namespace Pvz1
             // 
             // butBroiden
             // 
-            this.butBroiden.Location = new System.Drawing.Point(692, 179);
+            this.butBroiden.Location = new System.Drawing.Point(692, 252);
             this.butBroiden.Name = "butBroiden";
             this.butBroiden.Size = new System.Drawing.Size(156, 23);
             this.butBroiden.TabIndex = 15;
             this.butBroiden.Text = "Broiden";
             this.butBroiden.UseVisualStyleBackColor = true;
-            this.butBroiden.Click += new System.EventHandler(this.butBroiden_Click);
+            this.butBroiden.Click += new System.EventHandler(this.ButBroiden_Click);
+            // 
+            // btnInterpolation
+            // 
+            this.btnInterpolation.Location = new System.Drawing.Point(692, 342);
+            this.btnInterpolation.Name = "btnInterpolation";
+            this.btnInterpolation.Size = new System.Drawing.Size(156, 23);
+            this.btnInterpolation.TabIndex = 16;
+            this.btnInterpolation.Text = "Interpolation";
+            this.btnInterpolation.UseVisualStyleBackColor = true;
+            this.btnInterpolation.Click += new System.EventHandler(this.BtnInterpolation_Click);
+            // 
+            // radioLinear
+            // 
+            this.radioLinear.AutoSize = true;
+            this.radioLinear.Checked = true;
+            this.radioLinear.Location = new System.Drawing.Point(692, 372);
+            this.radioLinear.Name = "radioLinear";
+            this.radioLinear.Size = new System.Drawing.Size(107, 17);
+            this.radioLinear.TabIndex = 17;
+            this.radioLinear.TabStop = true;
+            this.radioLinear.Text = "Linear distribution";
+            this.radioLinear.UseVisualStyleBackColor = true;
+            // 
+            // radioCiobyscev
+            // 
+            this.radioCiobyscev.AutoSize = true;
+            this.radioCiobyscev.Location = new System.Drawing.Point(692, 395);
+            this.radioCiobyscev.Name = "radioCiobyscev";
+            this.radioCiobyscev.Size = new System.Drawing.Size(127, 17);
+            this.radioCiobyscev.TabIndex = 18;
+            this.radioCiobyscev.Text = "Ciobyscev distribution";
+            this.radioCiobyscev.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 678);
+            this.ClientSize = new System.Drawing.Size(858, 954);
+            this.Controls.Add(this.radioCiobyscev);
+            this.Controls.Add(this.radioLinear);
+            this.Controls.Add(this.btnInterpolation);
             this.Controls.Add(this.butBroiden);
             this.Controls.Add(this.btnOptimization);
             this.Controls.Add(this.btnGauss);
@@ -272,6 +306,9 @@ namespace Pvz1
         private Button btnGauss;
         private Button btnOptimization;
         private Button butBroiden;
+        private Button btnInterpolation;
+        private RadioButton radioLinear;
+        private RadioButton radioCiobyscev;
     }
 
 

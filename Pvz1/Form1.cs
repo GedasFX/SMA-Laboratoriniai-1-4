@@ -334,9 +334,14 @@ namespace Pvz1
             new GaussianElimination(this).Run();
         }
 
-        private void butBroiden_Click(object sender, EventArgs e)
+        private void ButBroiden_Click(object sender, EventArgs e)
         {
             new BroydenMethod(this).Run();
+        }
+
+        private void BtnInterpolation_Click(object sender, EventArgs e)
+        {
+            new Interpolation(this, radioLinear, radioCiobyscev).Run();
         }
 
         /// <summary>

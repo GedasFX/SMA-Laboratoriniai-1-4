@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="GaussianElimination.cs" />
     <Compile Include="GraphDimensions.cs" />
+    <Compile Include="Interpolation.cs" />
     <Compile Include="Optimization.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
