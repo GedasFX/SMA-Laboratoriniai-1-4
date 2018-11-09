@@ -224,9 +224,9 @@ namespace Pvz1
             this.radioCiobyscev.AutoSize = true;
             this.radioCiobyscev.Location = new System.Drawing.Point(692, 395);
             this.radioCiobyscev.Name = "radioCiobyscev";
-            this.radioCiobyscev.Size = new System.Drawing.Size(127, 17);
+            this.radioCiobyscev.Size = new System.Drawing.Size(131, 17);
             this.radioCiobyscev.TabIndex = 18;
-            this.radioCiobyscev.Text = "Ciobyscev distribution";
+            this.radioCiobyscev.Text = "Chebyshev distribution";
             this.radioCiobyscev.UseVisualStyleBackColor = true;
             // 
             // Form1

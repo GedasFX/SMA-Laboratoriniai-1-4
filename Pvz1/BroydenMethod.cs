@@ -41,7 +41,7 @@ namespace Pvz1
         {
             var opt = F(x);
             var ans = 0.0;
-            for (int i = 0; i < x.Count; i++)
+            for (var i = 0; i < x.Count; i++)
             {
                 ans += Math.Pow(opt[i], 2);
             }

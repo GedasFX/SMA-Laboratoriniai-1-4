@@ -46,7 +46,7 @@ namespace Pvz1
         private void AddPoints(Series seriesM, Series seriesN)
         {
             var rand = new Random();
-            for (int i = 0; i < N; i++)
+            for (var i = 0; i < N; i++)
             {
                 var point = new Vector2(rand.Next(-20, 20), rand.Next(-20, 20));
                 //new Vector2(6, 8);
@@ -76,7 +76,7 @@ namespace Pvz1
         {
             var rand = new Random(seed);
             var res = new List<Vector2>();
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 res.Add(new Vector2(rand.Next(-20, 20), rand.Next(-20, 20)));
             }
@@ -117,9 +117,9 @@ namespace Pvz1
         private float CalculateAverageDistance(params Vector2[] coordinates)
         {
             var total = 0f;
-            for (int i = 0; i < coordinates.Length; i++)
+            for (var i = 0; i < coordinates.Length; i++)
             {
-                for (int j = i; j < coordinates.Length; j++)
+                for (var j = i; j < coordinates.Length; j++)
                 {
                     total += Vector2.Distance(coordinates[i], coordinates[j]);
                     //(float)Math.Sqrt(Math.Pow(coordinates[i].X - coordinates[j].X, 2) + Math.Pow(coordinates[i].Y - coordinates[j].Y, 2));

@@ -32,7 +32,7 @@ namespace Pvz1
         };
 
             PrintMatrix(eMatrix);
-            for (int i = 0; i < eMatrix.Length - 1; i++)
+            for (var i = 0; i < eMatrix.Length - 1; i++)
             {
                 FindAndSwapLeading(i, eMatrix);
                 Nullify(i, eMatrix);
@@ -44,7 +44,7 @@ namespace Pvz1
             var res = Return(eMatrix);
             if (res != null)
             {
-                for (int i = 0; i < res.Length; i++)
+                for (var i = 0; i < res.Length; i++)
                 {
                     _form.OutputText($"x{i + 1} = {(Math.Sign(res[i]) >= 0 ? " " : "")}{res[i]:00.000}, ");
                 }
@@ -55,10 +55,10 @@ namespace Pvz1
                 return;
             }
             _form.OutputText("\n===================\n");
-            for (int i = 0; i < res.Length; i++)
+            for (var i = 0; i < res.Length; i++)
             {
                 var val = 0.0;
-                for (int j = 0; j < res.Length; j++)
+                for (var j = 0; j < res.Length; j++)
                 {
                     val += A[i][j] * res[j];
                     _form.OutputText($"{(Math.Sign(A[i][j]) >= 0 ? " " : "")}{A[i][j]:00.000} * ");
@@ -76,11 +76,11 @@ namespace Pvz1
         private void Nullify(int diagonalIndex, double[][] matrix)
         {
             // Iterates through rows
-            for (int j = diagonalIndex + 1; j < matrix.Length; j++)
+            for (var j = diagonalIndex + 1; j < matrix.Length; j++)
             {
                 var multiplier = -matrix[j][diagonalIndex] / matrix[diagonalIndex][diagonalIndex];
                 // Iterates trough columns in row
-                for (int k = 0; k < matrix[j].Length; k++)
+                for (var k = 0; k < matrix[j].Length; k++)
                 {
                     matrix[j][k] += multiplier * matrix[diagonalIndex][k];
                 }
@@ -91,7 +91,7 @@ namespace Pvz1
         {
             var hv = double.MinValue; var hi = 0; // Highest value, index
             // Find hi, hv
-            for (int j = i; j < matrix.Length; j++)
+            for (var j = i; j < matrix.Length; j++)
             {
                 if (Math.Abs(matrix[j][i]) > hv)
                 {
@@ -111,7 +111,7 @@ namespace Pvz1
 
             // Diagonal length
             var dLength = matrix.Length;
-            for (int i = dLength - 1; i >= 0; i--)
+            for (var i = dLength - 1; i >= 0; i--)
             {
                 result[i] = (matrix[i][dLength] - FindReturnResult(matrix, result, i)) / matrix[i][i];
                 if (double.IsNaN(result[i]))
@@ -133,7 +133,7 @@ namespace Pvz1
         private static double FindReturnResult(double[][] matrix, double[] answers, int index)
         {
             var result = 0.0;
-            for (int i = index; i < matrix.Length; i++)
+            for (var i = index; i < matrix.Length; i++)
             {
                 result += matrix[index][i] * answers[i];
             }
@@ -145,7 +145,7 @@ namespace Pvz1
         {
             foreach (var row in matrix)
             {
-                for (int j = 0; j < row.Length - 1; j++)
+                for (var j = 0; j < row.Length - 1; j++)
                 {
                     _form.OutputText($"{(Math.Sign(row[j]) >= 0 ? " " : "")}{row[j]:00.000} ");
                 }
