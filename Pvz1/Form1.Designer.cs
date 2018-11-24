@@ -47,8 +47,11 @@ namespace Pvz1
             this.btnOptimization = new System.Windows.Forms.Button();
             this.butBroiden = new System.Windows.Forms.Button();
             this.btnInterpolation = new System.Windows.Forms.Button();
-            this.radioLinear = new System.Windows.Forms.RadioButton();
-            this.radioCiobyscev = new System.Windows.Forms.RadioButton();
+            this.cbChebyshev = new System.Windows.Forms.CheckBox();
+            this.btnSpline = new System.Windows.Forms.Button();
+            this.cUseSpline = new System.Windows.Forms.CheckBox();
+            this.btnParamSpline = new System.Windows.Forms.Button();
+            this.btnApproximation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartGraph)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,35 +210,66 @@ namespace Pvz1
             this.btnInterpolation.UseVisualStyleBackColor = true;
             this.btnInterpolation.Click += new System.EventHandler(this.BtnInterpolation_Click);
             // 
-            // radioLinear
+            // cbChebyshev
             // 
-            this.radioLinear.AutoSize = true;
-            this.radioLinear.Checked = true;
-            this.radioLinear.Location = new System.Drawing.Point(692, 372);
-            this.radioLinear.Name = "radioLinear";
-            this.radioLinear.Size = new System.Drawing.Size(107, 17);
-            this.radioLinear.TabIndex = 17;
-            this.radioLinear.TabStop = true;
-            this.radioLinear.Text = "Linear distribution";
-            this.radioLinear.UseVisualStyleBackColor = true;
+            this.cbChebyshev.AutoSize = true;
+            this.cbChebyshev.Location = new System.Drawing.Point(692, 372);
+            this.cbChebyshev.Name = "cbChebyshev";
+            this.cbChebyshev.Size = new System.Drawing.Size(154, 17);
+            this.cbChebyshev.TabIndex = 17;
+            this.cbChebyshev.Text = "Use Chebyshev distribution";
+            this.cbChebyshev.UseVisualStyleBackColor = true;
             // 
-            // radioCiobyscev
+            // btnSpline
             // 
-            this.radioCiobyscev.AutoSize = true;
-            this.radioCiobyscev.Location = new System.Drawing.Point(692, 395);
-            this.radioCiobyscev.Name = "radioCiobyscev";
-            this.radioCiobyscev.Size = new System.Drawing.Size(131, 17);
-            this.radioCiobyscev.TabIndex = 18;
-            this.radioCiobyscev.Text = "Chebyshev distribution";
-            this.radioCiobyscev.UseVisualStyleBackColor = true;
+            this.btnSpline.Location = new System.Drawing.Point(692, 395);
+            this.btnSpline.Name = "btnSpline";
+            this.btnSpline.Size = new System.Drawing.Size(156, 23);
+            this.btnSpline.TabIndex = 18;
+            this.btnSpline.Text = "Spline";
+            this.btnSpline.UseVisualStyleBackColor = true;
+            this.btnSpline.Click += new System.EventHandler(this.BtnSpline_Click);
+            // 
+            // cUseSpline
+            // 
+            this.cUseSpline.AutoSize = true;
+            this.cUseSpline.Location = new System.Drawing.Point(692, 425);
+            this.cUseSpline.Name = "cUseSpline";
+            this.cUseSpline.Size = new System.Drawing.Size(77, 17);
+            this.cUseSpline.TabIndex = 19;
+            this.cUseSpline.Text = "Use Spline";
+            this.cUseSpline.UseVisualStyleBackColor = true;
+            // 
+            // btnParamSpline
+            // 
+            this.btnParamSpline.Location = new System.Drawing.Point(692, 448);
+            this.btnParamSpline.Name = "btnParamSpline";
+            this.btnParamSpline.Size = new System.Drawing.Size(156, 23);
+            this.btnParamSpline.TabIndex = 20;
+            this.btnParamSpline.Text = "Param. Spline";
+            this.btnParamSpline.UseVisualStyleBackColor = true;
+            this.btnParamSpline.Click += new System.EventHandler(this.btnParamSpline_Click);
+            // 
+            // btnApproximation
+            // 
+            this.btnApproximation.Location = new System.Drawing.Point(692, 477);
+            this.btnApproximation.Name = "btnApproximation";
+            this.btnApproximation.Size = new System.Drawing.Size(156, 23);
+            this.btnApproximation.TabIndex = 21;
+            this.btnApproximation.Text = "Approximation";
+            this.btnApproximation.UseVisualStyleBackColor = true;
+            this.btnApproximation.Click += new System.EventHandler(this.btnApproximation_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 954);
-            this.Controls.Add(this.radioCiobyscev);
-            this.Controls.Add(this.radioLinear);
+            this.Controls.Add(this.btnApproximation);
+            this.Controls.Add(this.btnParamSpline);
+            this.Controls.Add(this.cUseSpline);
+            this.Controls.Add(this.btnSpline);
+            this.Controls.Add(this.cbChebyshev);
             this.Controls.Add(this.btnInterpolation);
             this.Controls.Add(this.butBroiden);
             this.Controls.Add(this.btnOptimization);
@@ -307,8 +341,11 @@ namespace Pvz1
         private Button btnOptimization;
         private Button butBroiden;
         private Button btnInterpolation;
-        private RadioButton radioLinear;
-        private RadioButton radioCiobyscev;
+        private CheckBox cbChebyshev;
+        private Button btnSpline;
+        private CheckBox cUseSpline;
+        private Button btnParamSpline;
+        private Button btnApproximation;
     }
 
 

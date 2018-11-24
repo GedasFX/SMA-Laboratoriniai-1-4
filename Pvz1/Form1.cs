@@ -329,6 +329,28 @@ namespace Pvz1
 
         // ---------------------------------------------------------------------------------------------------------------
 
+        public void DrawGraph(Func<double, double> func, string name, double start, double end, double step)
+        {
+            var series = chartGraph.Series.Add(name);
+            series.ChartType = SeriesChartType.Line;
+
+            for (var x = start; x <= end; x += step)
+            {
+                series.Points.AddXY(x, func(x));
+            }
+        }
+
+        public void DrawPoints(Point[] points, string name)
+        {
+            var series = chartGraph.Series.Add(name);
+            series.ChartType = SeriesChartType.Point;
+            foreach (var point in points)
+            {
+                series.Points.AddXY(point.X, point.Y);
+            }
+        }
+
+        // ---------------------------------------------------------------------------------------------------------------
         private void BtnGauss_Click(object sender, EventArgs e)
         {
             new GaussianElimination(this).Run();
@@ -341,7 +363,22 @@ namespace Pvz1
 
         private void BtnInterpolation_Click(object sender, EventArgs e)
         {
-            new Interpolation(this, radioLinear, radioCiobyscev).Run();
+            new Interpolation(this, cbChebyshev).Run();
+        }
+
+        private void BtnSpline_Click(object sender, EventArgs e)
+        {
+            new SplineInterpolation(this, cUseSpline).Run();
+        }
+
+        private void btnApproximation_Click(object sender, EventArgs e)
+        {
+            new Approximation(this).Run();
+        }
+
+        private void btnParamSpline_Click(object sender, EventArgs e)
+        {
+            new ParamatersSpline(this).Run();
         }
 
         /// <summary>

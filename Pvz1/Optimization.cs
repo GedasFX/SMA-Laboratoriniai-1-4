@@ -122,7 +122,6 @@ namespace Pvz1
                 for (var j = i; j < coordinates.Length; j++)
                 {
                     total += Vector2.Distance(coordinates[i], coordinates[j]);
-                    //(float)Math.Sqrt(Math.Pow(coordinates[i].X - coordinates[j].X, 2) + Math.Pow(coordinates[i].Y - coordinates[j].Y, 2));
                 }
             }
 

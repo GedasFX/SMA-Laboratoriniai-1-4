@@ -6,8 +6,14 @@ using MathNet.Numerics.LinearAlgebra;
 
 namespace Pvz1
 {
-    internal struct Point
+    public struct Point
     {
+        public Point(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
+
         public double X { get; set; }
         public double Y { get; set; }
     }
@@ -15,44 +21,41 @@ namespace Pvz1
     internal class Interpolation
     {
         private readonly Form1 _form1;
-        private readonly RadioButton _radioLinear;
-        private readonly RadioButton _radioCiobyscev;
+        private readonly CheckBox _useChebyshev;
 
         private const int PointCount = 16;
 
-        public Interpolation(Form1 form1, RadioButton radioLinear, RadioButton radioCiobyscev)
+        public Interpolation(Form1 form1, CheckBox useChebyshev)
         {
             _form1 = form1;
-            _radioLinear = radioLinear;
-            _radioCiobyscev = radioCiobyscev;
+            _useChebyshev = useChebyshev;
 
             _form1.GetChart().Series.Clear();
         }
 
         public void Run()
         {
-            DrawGraph(F, "F(x)");
-            var res = Interpolate();
-            DrawGraph(d => Fstar(d, res), "F*(x)");
-            DrawGraph(x => Fstar(x, res) - F(x), "G(x)");
+            DrawGraph(_form1.GetChart(), F, "F(x)");
+            var res = Interpolate(GenerateInterpolationPoints(PointCount, _useChebyshev.Checked));
+            DrawGraph(_form1.GetChart(), d => Fstar(d, res), "F*(x)");
+            DrawGraph(_form1.GetChart(), x => Fstar(x, res) - F(x), "G(x)");
 
             var r = "";
             for (var i = 0; i < res.Length; i++)
             {
-                r += ($"{res[i]:E3} * x^{i} + ");
+                r += $"{res[i]:E3} * x^{i} + ";
             }
 
             r = r.Remove(r.Length - 3, 3);
             _form1.OutputText(r + '\n');
         }
 
-        public double F(double x) => Math.Log(x, Math.E) / (Math.Sin(2 * x) + 2.5);
+        public static double F(double x) => Math.Log(x, Math.E) / (Math.Sin(2 * x) + 2.5);
 
-        public double Fstar(double x, double[] coeficients) => coeficients.Select((t, i) => Math.Pow(x, i) * t).Sum();
+        public static double Fstar(double x, double[] coeficients) => coeficients.Select((t, i) => Math.Pow(x, i) * t).Sum();
 
-        public void DrawGraph(Func<double, double> func, string name)
+        public static void DrawGraph(Chart chart, Func<double, double> func, string name)
         {
-            var chart = _form1.GetChart();
             var series = chart.Series.Add(name);
             series.ChartType = SeriesChartType.Line;
 
@@ -87,16 +90,14 @@ namespace Pvz1
             return points;
         }
 
-        public double[] Interpolate()
+        public static double[] Interpolate(Point[] dataPoints)
         {
-            var dataPoints = GenerateInterpolationPoints(PointCount, _radioCiobyscev.Checked);
-
-            var matrix = Matrix<double>.Build.Dense(PointCount, PointCount);
+            var matrix = Matrix<double>.Build.Dense(dataPoints.Length, dataPoints.Length);
             var bVec = Vector<double>.Build.DenseOfEnumerable(dataPoints.Select(dp => dp.Y));
 
-            for (var i = 0; i < PointCount; i++)
+            for (var i = 0; i < dataPoints.Length; i++)
             {
-                for (var j = 0; j < PointCount; j++)
+                for (var j = 0; j < dataPoints.Length; j++)
                 {
                     matrix[i, j] = Math.Pow(dataPoints[i].X, j);
                 }
