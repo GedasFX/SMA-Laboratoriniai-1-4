@@ -24,6 +24,7 @@ namespace Pvz1
         public void Run()
         {
             var dat = Interpolation.Interpolate(TemperatureData);
+            _form1.DrawPoints(TemperatureData, "Temperature Data");
             if (_cUseSpline.Checked)
                 _form1.DrawGraph(Interpolate, "F(x)", 1, 11.96875, 0.03125);
             else
@@ -46,15 +47,20 @@ namespace Pvz1
 
         private static double Akima(double x, int i, IReadOnlyList<Point> p)
         {
-            if (i == 0) i = 1;
-            if (i == p.Count - 1) i = p.Count - 2;
-            return (2 * x - p[i].X - p[i + 1].X) / ((p[i - 1].X - p[i].X) * (p[i - 1].X - p[i + 1].X)) * p[i - 1].Y +
-                   (2 * x - p[i - 1].X - p[i + 1].X) / ((p[i].X - p[i - 1].X) * (p[i].X - p[i + 1].X)) * p[i].Y +
-                   (2 * x - p[i - 1].X - p[i].X) / ((p[i + 1].X - p[i - 1].X) * (p[i + 1].X - p[i].X)) * p[i + 1].Y;
+            if (i == 0) return Akima(x, 0, 1, 2, p);
+            if (i == p.Count - 1) return Akima(x, p.Count - 3, p.Count - 2, p.Count - 1, p);
+            return Akima(x, i - 1, i, i + 1, p);
+        }
+
+        public static double Akima(double x, int im1, int i, int ip1, IReadOnlyList<Point> p)
+        {
+            return (2 * x - p[i].X - p[ip1].X) / ((p[im1].X - p[i].X) * (p[im1].X - p[ip1].X)) * p[im1].Y +
+                   (2 * x - p[im1].X - p[ip1].X) / ((p[i].X - p[im1].X) * (p[i].X - p[ip1].X)) * p[i].Y +
+                   (2 * x - p[im1].X - p[i].X) / ((p[ip1].X - p[im1].X) * (p[ip1].X - p[i].X)) * p[ip1].Y;
         }
 
         // Returs the U and V composition
-        private static (double, double) Hermite(double x, int j, double[] arr)
+        public static (double, double) Hermite(double x, int j, double[] arr)
         {
             var lagrange = Lagrange(x, j, arr);
             var dLagrange = LagrangeDerivative(j, arr);
