@@ -47,11 +47,14 @@ namespace Pvz1
             series.ChartType = SeriesChartType.Line;
             for (int i = 0; i < InterpPoints - 1; i++)
             {
+                // Get the 2 points to interpolate between
+                var intPts = new[] { t[i], t[i + 1] };
                 for (int j = 0; j < PointsBetweenInterps; j++)
                 {
                     // Step, (x in normal equation)
                     var t0 = t[i] + (t[i + 1] - t[i]) * j / PointsBetweenInterps;
-                    var intPts = new[] { t[i], t[i + 1] };
+                    
+                    // Calculate the Hermite values for x(t) ant y(t)
                     var x0 = 0.0; var y0 = 0.0;
                     for (int k = 0; k < 2; k++)
                     {
@@ -60,6 +63,7 @@ namespace Pvz1
                         y0 += h.Item1 * ty[i + k].Y + h.Item2 * Akima(t[i + k], i + k, ty);
                     }
 
+                    // Display the point on graph
                     series.Points.AddXY(x0, y0);
                 }
             }

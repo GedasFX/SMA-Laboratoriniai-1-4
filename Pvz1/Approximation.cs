@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Linq;
 using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Complex;
 
 namespace Pvz1
 {
     internal class Approximation
     {
-        private Form1 _form1;
+        private readonly Form1 _form1;
+        
+        public Approximation(Form1 form1) => _form1 = form1;
 
         private const int LevelPoly = 6;
-
-        public Approximation(Form1 form1) => _form1 = form1;
 
         public void Run()
         {

@@ -38,7 +38,7 @@ namespace Pvz1
             DrawGraph(_form1.GetChart(), F, "F(x)");
             var res = Interpolate(GenerateInterpolationPoints(PointCount, _useChebyshev.Checked));
             DrawGraph(_form1.GetChart(), d => Fstar(d, res), "F*(x)");
-            DrawGraph(_form1.GetChart(), x => Fstar(x, res) - F(x), "G(x)");
+            DrawGraph(_form1.GetChart(), x => Fstar(x, res) - F(x), "G(x)"); // Difference
 
             var r = "";
             for (var i = 0; i < res.Length; i++)
