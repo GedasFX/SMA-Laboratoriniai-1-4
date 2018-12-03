@@ -52,6 +52,7 @@ namespace Pvz1
             this.cUseSpline = new System.Windows.Forms.CheckBox();
             this.btnParamSpline = new System.Windows.Forms.Button();
             this.btnApproximation = new System.Windows.Forms.Button();
+            this.btnDiffEq = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartGraph)).BeginInit();
             this.SuspendLayout();
             // 
@@ -260,11 +261,22 @@ namespace Pvz1
             this.btnApproximation.UseVisualStyleBackColor = true;
             this.btnApproximation.Click += new System.EventHandler(this.btnApproximation_Click);
             // 
+            // btnDiffEq
+            // 
+            this.btnDiffEq.Location = new System.Drawing.Point(692, 527);
+            this.btnDiffEq.Name = "btnDiffEq";
+            this.btnDiffEq.Size = new System.Drawing.Size(156, 23);
+            this.btnDiffEq.TabIndex = 22;
+            this.btnDiffEq.Text = "Differenetial equations";
+            this.btnDiffEq.UseVisualStyleBackColor = true;
+            this.btnDiffEq.Click += new System.EventHandler(this.btnDiffEq_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 954);
+            this.Controls.Add(this.btnDiffEq);
             this.Controls.Add(this.btnApproximation);
             this.Controls.Add(this.btnParamSpline);
             this.Controls.Add(this.cUseSpline);
@@ -346,6 +358,7 @@ namespace Pvz1
         private CheckBox cUseSpline;
         private Button btnParamSpline;
         private Button btnApproximation;
+        private Button btnDiffEq;
     }
 
 

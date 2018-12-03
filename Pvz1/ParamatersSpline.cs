@@ -29,18 +29,12 @@ namespace Pvz1
             var t = new double[InterpPoints];
             var tx = new Point[InterpPoints];
             var ty = new Point[InterpPoints];
-            var dxdt = new double[InterpPoints];
-            var dydt = new double[InterpPoints];
             for (int i = 0; i < InterpPoints; i++)
             {
                 // Data transfer
                 t[i] = step * i;
                 tx[i] = new Point(step * i, _borderData[(int)t[i]].X);
                 ty[i] = new Point(step * i, _borderData[(int)t[i]].Y);
-
-                // Derivative calculation
-                dxdt[i] = Akima(t[i], i, tx);
-                dydt[i] = Akima(t[i], i, ty);
             }
 
             var series = form1.GetChart().Series.Add("Tin");

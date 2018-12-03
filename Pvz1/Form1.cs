@@ -381,6 +381,11 @@ namespace Pvz1
             new ParamatersSpline(this).Run();
         }
 
+        private void btnDiffEq_Click(object sender, EventArgs e)
+        {
+            new DifferentialEquations(this).Run();
+        }
+
         /// <summary>
         /// Uždaroma programa
         /// </summary>
